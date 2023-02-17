@@ -27,14 +27,14 @@ const Header = ({setArtists}) => {
     }
 
   return (
-    <>
+    <div className='header_container'>
       <Form.Group>
         <Form.Control type='text' placeholder='Search artist'
         onChange={(e)=>setSearchKey(e.target.value)}
         ></Form.Control>
       </Form.Group>
       <Button onClick={searchArtists}>Search</Button>
-    </>
+    </div>
   )
 }
 

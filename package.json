@@ -13,7 +13,9 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "react-spotify-api": "^3.0.0",
+    "use-spotify-player": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
