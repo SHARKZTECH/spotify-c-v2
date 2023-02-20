@@ -11,7 +11,7 @@ function App() {
     setToken(window.localStorage.getItem("token"));
   },[])
   return (
-    <div className="App">
+    <div >
       {!token ?(
         <Login/>
       ):(

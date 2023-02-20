@@ -3,6 +3,7 @@ import Header from './Header';
 import { Row,Col } from 'react-bootstrap';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
+import PlayList from './PlayList';
 
 const Home = () => {
   const [token,setToken]=useState("");
@@ -19,12 +20,14 @@ const Home = () => {
           <LeftSide/>
           {/* {artists?.map(artist=>(<h1>{artist.name}</h1>))} */}
         </Col>
+
         <Col md={6} sm={8}>
            <div>   
             <Header setArtists={setArtists}/>
-             {artists?.map(artist=>(<h1>{artist.name}</h1>))}
+            <PlayList artists={artists}/>
            </div>
         </Col>
+
         <Col md={3} className="d-sm-none d-md-block">
           <RightSide/>
         </Col>

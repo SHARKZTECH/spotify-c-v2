@@ -1,5 +1,6 @@
 /* #root {
-  max-width: 1280px;
+  max-width: 100vw;
+  max-height: 80vh;
 } */
 
 .logo {
@@ -48,16 +49,16 @@
   filter: drop-shadow(0 0 2em #208da5aa);
 }
 
+
 .header_container{
   margin-top: .5rem;
   display: flex;
 }
 
 
-/* .home_container{
-  width: 100%;
-  height: 100vh;
-} */
+.home_container{
+
+}
 
 
 .left_side_container{
@@ -93,8 +94,8 @@
 .left_side_container .item:hover{
   font-weight: 600;
   filter: none;
-
 }
+
 
 .right_side_container{
   background-color: #208da5aa;
@@ -147,4 +148,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+.playlist_conatiner{
+  height: 100vh;
+  overflow-y: scroll;
 }
