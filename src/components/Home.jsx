@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Header from './Header';
 import { Row,Col } from 'react-bootstrap';
 import LeftSide from './LeftSide';
+import RightSide from './RightSide';
 
 const Home = () => {
   const [token,setToken]=useState("");
@@ -24,9 +25,8 @@ const Home = () => {
              {artists?.map(artist=>(<h1>{artist.name}</h1>))}
            </div>
         </Col>
-        <Col md={2} className="d-sm-none d-md-block">
-          Right
-          {artists?.map(artist=>(<h1>{artist.name}</h1>))}
+        <Col md={3} className="d-sm-none d-md-block">
+          <RightSide/>
         </Col>
       </Row>
     </div>

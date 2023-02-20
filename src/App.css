@@ -1,6 +1,6 @@
-#root {
+/* #root {
   max-width: 1280px;
-}
+} */
 
 .logo {
   height: 10em;
@@ -61,6 +61,8 @@
 
 
 .left_side_container{
+  background-color:  rgb(7, 7, 46);
+  height: 100vh;
 }
 .left_side_container .logo_container{
   font-weight: bolder;
@@ -85,8 +87,64 @@
   margin-bottom: .5rem;
   cursor: pointer;
   transition: all ease .1s;
+  filter: drop-shadow(0 0 20px red) invert(50%);
+
 }
 .left_side_container .item:hover{
   font-weight: 600;
-  filter: drop-shadow(0 0 20px red) invert(75%);
+  filter: none;
+
+}
+
+.right_side_container{
+  background-color: #208da5aa;
+  height: 100vh;
+  padding: .8rem;
+}
+.user_profile_container{
+  display: flex;
+  align-items: center;
+}
+.user_profile_img{
+  width: 2.5rem;
+  border-radius: 2.5rem;
+}
+.user_profile_container p{
+ margin: 0px;
+ margin-left: .3rem;
+}
+.recent_container_header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+.recent_container_item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.recent_container_item .song{
+  display: flex;
+  align-items: center;
+}
+.recent_container_item .song p{
+  margin: 0px;
+  margin-left: 1rem;
+}
+.recent_container_item img{
+  height: 40px;
+}
+.playing_song img{
+  height: 180px;
+  width: 280px;
+  border-radius: .3rem;
+}
+.playing_song p{
+  margin: 0px;
+}
+.playing_song :nth-child(2){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
