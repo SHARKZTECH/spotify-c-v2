@@ -1,6 +1,7 @@
 import React from 'react'
 import USER from "../assets/user.jpeg"
 import {AiFillHeart} from "react-icons/ai"
+import Song from './Song'
 
 const RightSide = () => {
   return (
@@ -22,12 +23,8 @@ const RightSide = () => {
 
           {Array.from({ length: 6 }).map((_, idx) => (
           <div className='recent_container_item'>
-            <div className='song'>
-            <img src={USER} alt="song_image"/>
             <div>
-              <p>Song name</p>
-              <p style={{color:"gray"}}>Artist Name</p>
-            </div>
+             <Song/>
             </div>
              12min ago
           </div>

@@ -3,7 +3,7 @@ import Header from './Header';
 import { Row,Col } from 'react-bootstrap';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
-import PlayList from './PlayList';
+import MiddleSide from './MiddleSide';
 
 const Home = () => {
   const [token,setToken]=useState("");
@@ -24,7 +24,7 @@ const Home = () => {
         <Col md={6} sm={8}>
            <div>   
             <Header setArtists={setArtists}/>
-            <PlayList artists={artists}/>
+            <MiddleSide artists={artists}/>
            </div>
         </Col>
 

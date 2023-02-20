@@ -53,6 +53,8 @@
 .header_container{
   margin-top: .5rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -125,17 +127,23 @@
   align-items: center;
   cursor: pointer;
 }
-.recent_container_item .song{
+
+
+
+.song{
   display: flex;
   align-items: center;
 }
-.recent_container_item .song p{
+ .song p{
   margin: 0px;
   margin-left: 1rem;
 }
-.recent_container_item img{
+.song img{
   height: 40px;
 }
+
+
+
 .playing_song img{
   height: 180px;
   width: 280px;
@@ -151,7 +159,10 @@
 }
 
 
-.playlist_conatiner{
+.middleSide_conatiner{
   height: 100vh;
   overflow-y: scroll;
+}
+.middleSide_conatiner::-webkit-scrollbar {
+  display: none;
 }
