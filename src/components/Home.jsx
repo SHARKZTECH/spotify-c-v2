@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Header from './Header';
 import { Row,Col } from 'react-bootstrap';
+import LeftSide from './LeftSide';
 
 const Home = () => {
   const [token,setToken]=useState("");
@@ -14,15 +15,11 @@ const Home = () => {
     <div className='home_container'>
       <Row>
         <Col md={3} sm={4}>
-          <div>Logo</div>
-          <div>Home</div>
-          <div>Trending</div>
-          <div>Library</div>
-          {artists?.map(artist=>(<h1>{artist.name}</h1>))}
+          <LeftSide/>
+          {/* {artists?.map(artist=>(<h1>{artist.name}</h1>))} */}
         </Col>
         <Col md={6} sm={8}>
-           <div>
-            Mid
+           <div>   
             <Header setArtists={setArtists}/>
              {artists?.map(artist=>(<h1>{artist.name}</h1>))}
            </div>

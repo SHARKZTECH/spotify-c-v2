@@ -1,6 +1,5 @@
 #root {
   max-width: 1280px;
-  text-align: center;
 }
 
 .logo {
@@ -16,8 +15,6 @@
   scale: 1.1;
   animation: none;
 }
-
-
 @keyframes logo-spin {
   from {
     transform: rotateY(0deg);
@@ -52,10 +49,44 @@
 }
 
 .header_container{
-  margin-top: 1rem;
+  margin-top: .5rem;
   display: flex;
 }
-.home_container{
+
+
+/* .home_container{
   width: 100%;
   height: 100vh;
+} */
+
+
+.left_side_container{
+}
+.left_side_container .logo_container{
+  font-weight: bolder;
+  font-size: large;
+  color: rgb(87, 236, 204);
+}
+.left_side_container .logo{
+  width: 7rem;
+  height: 7rem;
+}
+.left_side_container .item-title{
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  color: antiquewhite;
+  margin-left: 1.5rem;
+}
+.left_side_container .item{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1.5rem;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  transition: all ease .1s;
+}
+.left_side_container .item:hover{
+  font-weight: 600;
+  filter: drop-shadow(0 0 20px red) invert(75%);
 }
