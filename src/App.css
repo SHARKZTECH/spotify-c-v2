@@ -89,8 +89,9 @@
   margin-left: 1.5rem;
   margin-bottom: .5rem;
   cursor: pointer;
-  transition: all ease .1s;
-  filter: drop-shadow(0 0 20px red) invert(50%);
+  will-change: filter;
+  transition: filter 300ms;
+  filter: drop-shadow(0 0 2em red) invert(50%);
 
 }
 .left_side_container .item:hover{
@@ -160,9 +161,34 @@
 
 
 .middleSide_conatiner{
-  height: 100vh;
+  max-height: 80vh;
   overflow-y: scroll;
+  /* position: relative; */
 }
 .middleSide_conatiner::-webkit-scrollbar {
   display: none;
+}
+
+
+.player_container{
+  background-color:#031225ec;
+  position:absolute;
+  bottom: .5rem;
+  width: 50%;
+  height: 5rem;
+  padding: 1rem;
+}
+.player_icons_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+ .react-icons{
+  margin-right: .7rem;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.react-icons:hover{
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px  white);
 }

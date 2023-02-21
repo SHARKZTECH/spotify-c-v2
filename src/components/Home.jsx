@@ -4,6 +4,7 @@ import { Row,Col } from 'react-bootstrap';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
 import MiddleSide from './MiddleSide';
+import Player from './Player';
 
 const Home = () => {
   const [token,setToken]=useState("");
@@ -25,6 +26,7 @@ const Home = () => {
            <div>   
             <Header setArtists={setArtists}/>
             <MiddleSide artists={artists}/>
+            {/* <Player/> */}
            </div>
         </Col>
 

@@ -4,7 +4,8 @@ import ICON from "../assets/icon1.png";
 
 const Login = () => {
   const CLIENT_ID = "0957e11683e846679d1076e5c4c95afe"
-  const REDIRECT_URI = "http://localhost:5173/"
+  // const REDIRECT_URI = "https://sharkztech.github.io/spotify-c-v2/"
+  const REDIRECT_URI ="http://localhost:5173/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
   const RESPONSE_TYPE = "token"
   const url=`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`

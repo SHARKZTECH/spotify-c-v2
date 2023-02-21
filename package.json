@@ -2,6 +2,7 @@
   "name": "spotify_v2",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://sharkztech.github.io/spotify-c-v2/",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import Song from './Song'
 import {AiFillHeart} from "react-icons/ai"
+import Player from "./Player";
 
 
 const MiddleSide = ({artists}) => {
@@ -29,7 +30,7 @@ const MiddleSide = ({artists}) => {
               </tr>
             </thead>
             <tbody>
-            {Array.from({ length: 6 }).map((_, idx) => (
+            {Array.from({ length: 4 }).map((_, idx) => (
               <tr>
                 <td>1</td>
                 <td>
@@ -45,9 +46,12 @@ const MiddleSide = ({artists}) => {
 
            </div>
          </div>
+         <Player/>
+
        </div>
 
      {artists?.map(artist=>(<h1>{artist.name}</h1>))}
+
     </div>
   )
 }
