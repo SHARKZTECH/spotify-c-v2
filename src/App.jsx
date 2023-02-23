@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import React, { forwardRef, useRef, useLayoutEffect, useImperativeHandle } from 'react';
 import gsap from 'gsap';
+import { BsMusicNoteBeamed } from 'react-icons/bs';
 
 function App(props) {
   const [token,setToken]=useState("");
@@ -29,8 +30,9 @@ function App(props) {
     return (
      <div className='circle_container' ref={el}>
     <div className='circle' ></div>
-    <div className='circle'></div>
-    <div className='circle'></div>
+      {/* <BsMusicNoteBeamed className='circle' size={'25'}/> */}
+    {/* <div className='circle'></div> */}
+    {/* <div className='circle'></div> */}
      </div> 
     );
   });
