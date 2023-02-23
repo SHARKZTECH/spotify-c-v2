@@ -9,7 +9,7 @@
 }
 .circle {
   position: absolute;
-  background-color: #0c4643ec;
+  background-color: #2bd6a3ec;
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
@@ -127,7 +127,7 @@
 
 
 .right_side_container{
-  background-color: #208da5aa;
+  background-color: #0b3642aa;
   height: 100vh;
   padding: .8rem;
 }
@@ -209,8 +209,12 @@
   position:absolute;
   bottom: .5rem;
   width: 50%;
-  height: 5rem;
+  height: 7rem;
   padding: 1rem;
+}
+.player_container p{
+  margin: 0px;
+  text-align: center;
 }
 @media (max-width: 710px){
   .player_container{
