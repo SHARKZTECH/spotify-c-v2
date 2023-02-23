@@ -3,6 +3,31 @@
   max-height: 80vh;
 } */
 
+.circle_container{
+  display: flex;
+  align-items: center;
+}
+.circle {
+  position: absolute;
+  background-color: #b8a75aec;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  opacity: .5;
+}
+.circle_container :nth-child(1){
+  background-color: #335d94ec;
+  margin-left: 1.2rem;
+  width: 1rem;
+  height: 1rem;
+}
+.circle_container :nth-child(2){
+  background-color: #0e2038ec;
+  align-self: baseline;
+  margin-top: .7rem;
+  margin-left: .7rem;
+}
+
 .logo {
   height: 10em;
   padding: 1.5em;

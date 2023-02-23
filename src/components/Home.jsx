@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import Header from './Header';
 import { Row,Col } from 'react-bootstrap';
+
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
 import MiddleSide from './MiddleSide';
