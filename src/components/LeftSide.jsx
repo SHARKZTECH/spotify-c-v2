@@ -5,6 +5,7 @@ import {BsMusicNoteBeamed,BsFillPersonCheckFill} from "react-icons/bs"
 import {TbPlaylist} from "react-icons/tb"
 import {MdOutlineLibraryMusic,MdExplore} from "react-icons/md"
 import {BiDisc} from "react-icons/bi"
+import Myplaylist from './Myplaylist';
 
 const LeftSide = () => {
   return (
@@ -55,6 +56,7 @@ const LeftSide = () => {
            <TbPlaylist size={'25'}/>
             Playlist
           </div>  
+          <Myplaylist/>
     </div>
   )
 }

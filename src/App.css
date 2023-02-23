@@ -124,6 +124,19 @@
   font-weight: 600;
   filter: none;
 }
+.my_playlists{
+  padding-left: 3rem;
+  color: #235821;
+  height: 22%;
+  overflow-y: scroll;
+  border-top:1px solid #235821;
+}
+.my_playlists p{
+  margin: 0px;
+}
+.my_playlists::-webkit-scrollbar {
+  display: none;
+}
 
 
 .right_side_container{

@@ -27,7 +27,7 @@ const Player = () => {
     setSong(data)
   }
 
-  console.log(song)
+  // console.log(song)
   return (
     <div className='player_container'>
       {song ?(
