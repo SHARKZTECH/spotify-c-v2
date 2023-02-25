@@ -18,6 +18,14 @@ const Player = () => {
     if(token != ""){
       playerState();
     }
+
+    // const intervalId = setInterval(() => {
+    //   if(token != ""){
+    //     playerState();
+    //   }  
+    // }, 2000);
+    // return () => clearInterval(intervalId);
+
   },[token,dispatch])
 
   const playerState = async () => {
@@ -30,6 +38,8 @@ const Player = () => {
 
     dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
   }
+
+  
 
   // console.log(song)
   return (
