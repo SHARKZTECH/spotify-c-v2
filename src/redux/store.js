@@ -22,8 +22,8 @@ const loadFromLocalStorage=()=>{
     }
 }
 
-const token=localStorage.getItem("token")?
-localStorage.getItem("token"):null
+const token=window.localStorage.getItem("token")?
+window.localStorage.getItem("token"):null;
 
 const initialState={
     ...loadFromLocalStorage,

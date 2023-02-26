@@ -4,7 +4,7 @@ import { getCurrentSongReducer,getMyPlayListsReducer } from "./songReducer";
 
 const reducers=combineReducers({
     currentSong:getCurrentSongReducer,
-    myplalists:getMyPlayListsReducer,
+    myplaylists:getMyPlayListsReducer,
 })
 
 export default reducers

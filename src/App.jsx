@@ -28,12 +28,7 @@ function App(props) {
       []
     );
     return (
-     <div className='circle_container' ref={el}>
-    <div className='circle' ></div>
-      {/* <BsMusicNoteBeamed className='circle' size={'25'}/> */}
-    {/* <div className='circle'></div> */}
-    {/* <div className='circle'></div> */}
-     </div> 
+    <div className='circle' ref={el}></div> 
     );
   });
   const circleRef = useRef();
@@ -50,9 +45,17 @@ function App(props) {
   }, []);
 
 
+      //  <div className='circle_container' ref={el}>
+      // <div className='circle' ref={el}></div>
+      {/* <BsMusicNoteBeamed className='circle' size={'25'}/> */}
+    {/* <div className='circle'></div> */}
+    {/* <div className='circle'></div> */}
+    //  </div> 
+
+
   return (
     <div className='app'>
-      <Circle ref={circleRef} />
+      {/* <Circle ref={circleRef} /> */}
         {!token ?(
          <Login/>
        ):(

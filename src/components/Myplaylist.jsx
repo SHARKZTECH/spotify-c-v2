@@ -5,10 +5,10 @@ import { getMyPlayLists } from '../redux/actions/SongAction';
 
 const Myplaylist = () => {
     const [token,setToken]=useState("");
-    const [playlists,setPlaylists]=useState([]);
+    // const [playlists,setPlaylists]=useState([]);
 
     const dispatch=useDispatch();
-    const {myplalists}=useDispatch(state=>state.myplalists);
+    const {playlists,success,loading}=useSelector(state=>state.myplaylists);
   
     useEffect(()=>{
       setToken(window.localStorage.getItem("token"));    
@@ -17,26 +17,20 @@ const Myplaylist = () => {
     useLayoutEffect(()=>{
       if(token != ""){
         // playerState();
-        dispatch(getMyPlayLists());
+        dispatch(getMyPlayLists());    
       }
     },[token])
 
-    setPlaylists(myplalists);
-  
-    const playerState = async () => {
-      const {data} = await axios.get("https://api.spotify.com/v1/me/playlists", {
-          headers: {
-              Authorization: `Bearer ${token}`
-          }   
-      })
-      // setPlaylists(data.items)
-    }
-  
+
   return (
     <div className='my_playlists'>
-       {playlists.map(playlist=>(
+      {loading ? "loading...": (
+        <>
+       {playlists?.map(playlist=>(
         <p key={playlist.id}>{playlist.name}</p>
        ))}
+       </>
+       )}
     </div>
 )
 }
