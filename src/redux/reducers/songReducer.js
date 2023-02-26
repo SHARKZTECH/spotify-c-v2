@@ -12,3 +12,16 @@ export const getCurrentSongReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+
+export const getMyPlayListsReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_MYPlAYLIST_REQUEST":
+            return {loading:true} 
+        case "GET_MYPLAYLISY_SUCCESS":
+            return {loading:false,playlists:payload,success:true}
+        case "GET_MYPLAYLIST_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}

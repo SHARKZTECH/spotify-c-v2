@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 
-import { getCurrentSongReducer } from "./songReducer";
+import { getCurrentSongReducer,getMyPlayListsReducer } from "./songReducer";
 
 const reducers=combineReducers({
     currentSong:getCurrentSongReducer,
+    myplalists:getMyPlayListsReducer,
 })
 
 export default reducers

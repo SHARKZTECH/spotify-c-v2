@@ -1,9 +1,14 @@
 import React,{useEffect,useLayoutEffect,useState} from 'react'
 import axios from 'axios';
+import { useDispatch,useSelector } from 'react-redux';
+import { getMyPlayLists } from '../redux/actions/SongAction';
 
 const Myplaylist = () => {
     const [token,setToken]=useState("");
     const [playlists,setPlaylists]=useState([]);
+
+    const dispatch=useDispatch();
+    const {myplalists}=useDispatch(state=>state.myplalists);
   
     useEffect(()=>{
       setToken(window.localStorage.getItem("token"));    
@@ -11,9 +16,12 @@ const Myplaylist = () => {
   
     useLayoutEffect(()=>{
       if(token != ""){
-        playerState();
+        // playerState();
+        dispatch(getMyPlayLists());
       }
     },[token])
+
+    setPlaylists(myplalists);
   
     const playerState = async () => {
       const {data} = await axios.get("https://api.spotify.com/v1/me/playlists", {
@@ -21,7 +29,7 @@ const Myplaylist = () => {
               Authorization: `Bearer ${token}`
           }   
       })
-      setPlaylists(data.items)
+      // setPlaylists(data.items)
     }
   
   return (
