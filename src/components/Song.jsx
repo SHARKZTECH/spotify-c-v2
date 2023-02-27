@@ -2,13 +2,13 @@ import React from 'react'
 import USER from "../assets/user.jpeg"
 
 
-const Song = () => {
+const Song = ({track}) => {
   return (
     <div className='song'>
     <img src={USER} alt="song_image"/>
     <div>
-      <p>Song name</p>
-      <p style={{color:"gray"}}>Artist Name</p>
+      <p>{track?.name}</p>
+      <p style={{color:"gray"}}>{track?.artists.map((artist=>artist.name)).join(", ")}</p>
     </div>
     </div>
   )

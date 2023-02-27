@@ -4,6 +4,7 @@ import {AiFillHeart} from "react-icons/ai"
 import IMG from "../assets/MPlayer.png"
 import { useDispatch,useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { formatTime } from './formartedTime';
 
 const PlayListContainer = ({spotify,playlist_id}) => {
     const dispatch=useDispatch();
@@ -42,7 +43,6 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         <tr>
             <th>#</th>
             <th>Title</th>
-            <th>Album</th>
             <th>Date Added</th>
             <th>Time_Icon</th>
         </tr>
@@ -52,11 +52,10 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         <tr>
             <td>{idx}</td>
             <td>
-            <Song/>
+            <Song track={song.track}/>
             </td>
-            <td>Life is Good</td>
             <td>{song.added_at}</td>
-            <td><AiFillHeart/> 3.14</td>
+            <td><AiFillHeart/>{formatTime(song.track.duration_ms)}</td>
         </tr>
         ))}             
         </tbody>
