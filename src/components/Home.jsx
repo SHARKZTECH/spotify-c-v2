@@ -10,6 +10,7 @@ import Player from './Player';
 const Home = ({spotify}) => {
   const [token,setToken]=useState("");
   const [artists,setArtists]=useState([]);
+  const [playlist_id,setPlaylistId]=useState(null);
 
   useEffect(()=>{
     setToken(window.localStorage.getItem("token"));
@@ -19,14 +20,14 @@ const Home = ({spotify}) => {
     <div className='home_container'>
       <Row>
         <Col md={3} sm={4}>
-          <LeftSide/>
+          <LeftSide setPlaylistId={setPlaylistId}/>
           {/* {artists?.map(artist=>(<h1>{artist.name}</h1>))} */}
         </Col>
 
         <Col md={6} sm={8}>
            <div>   
             <Header setArtists={setArtists}/>
-            <MiddleSide artists={artists} spotify={spotify}/>
+            <MiddleSide artists={artists} spotify={spotify} playlist_id={playlist_id}/>
             {/* <Player/> */}
            </div>
         </Col>

@@ -133,6 +133,7 @@
 }
 .my_playlists p{
   margin: 0px;
+  cursor: pointer;
 }
 .my_playlists::-webkit-scrollbar {
   display: none;

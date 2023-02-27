@@ -38,10 +38,10 @@ const RightSide = () => {
           ))}
 
           <div className='playing_song'>
-              <img src={currentSong?.item.album.images[0].url} alt="song_image"/>
+              <img src={currentSong?.item?.album.images[0].url} alt="song_image"/>
               <div>
                 <div>
-                <p>{currentSong?.item.name}</p>
+                <p>{currentSong?.item?.name}</p>
                 <p style={{color:"gray"}}>{currentSong?.item?.artists.map(artist=>artist.name).join(", ")}</p>                  
                 </div>
              <AiFillHeart/>

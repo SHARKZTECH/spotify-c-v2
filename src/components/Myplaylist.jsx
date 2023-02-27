@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch,useSelector } from 'react-redux';
 import { getMyPlayLists } from '../redux/actions/SongAction';
 
-const Myplaylist = () => {
+const Myplaylist = ({setPlaylistId}) => {
     const [token,setToken]=useState("");
     // const [playlists,setPlaylists]=useState([]);
 
@@ -21,13 +21,17 @@ const Myplaylist = () => {
       }
     },[token])
 
+    const handleClick=(id)=>{
+      setPlaylistId(id)
+    }
+
 
   return (
     <div className='my_playlists'>
       {loading ? "loading...": (
         <>
        {playlists?.map(playlist=>(
-        <p key={playlist.id}>{playlist.name}</p>
+        <p key={playlist.id} onClick={()=>handleClick(playlist.id)}>{playlist.name}</p>
        ))}
        </>
        )}

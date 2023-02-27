@@ -41,7 +41,7 @@ export const getPlayListsReducer=(state={},{type,payload})=>{
     switch(type){
         case "GET_PlAYLIST_REQUEST":
             return {loading:true} 
-        case "GET_PLAYLISY_SUCCESS":
+        case "GET_PLAYLIST_SUCCESS":
             return {loading:false,playlist:payload,success:true}
         case "GET_PLAYLIST_FAIL":
                 return {}

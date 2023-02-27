@@ -7,7 +7,7 @@ import {MdOutlineLibraryMusic,MdExplore} from "react-icons/md"
 import {BiDisc} from "react-icons/bi"
 import Myplaylist from './Myplaylist';
 
-const LeftSide = () => {
+const LeftSide = ({setPlaylistId}) => {
   return (
     <div className='left_side_container'>
         <div className='logo_container'>
@@ -56,7 +56,7 @@ const LeftSide = () => {
            <TbPlaylist size={'25'}/>
             Playlist
           </div>  
-          <Myplaylist/>
+          <Myplaylist setPlaylistId={setPlaylistId}/>
     </div>
   )
 }
