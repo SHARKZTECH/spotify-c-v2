@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons'
 import axios from 'axios'
 import { useDispatch,useSelector } from 'react-redux'
 
-const Player = () => {
+const Player = ({spotify}) => {
   const [token,setToken]=useState("");
   const dispatch=useDispatch();
   const {currentSong}=useSelector(state=>state.currentSong)
@@ -16,7 +16,15 @@ const Player = () => {
 
   useLayoutEffect(()=>{
     if(token != ""){
-      playerState();
+      // playerState();           
+      spotify.getMyCurrentPlayingTrack().then(data=>{
+        // console.log(data)
+        dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
+
+      }).catch(error=>{
+        console.log(error)
+      })
+
     }
 
     // const intervalId = setInterval(() => {
@@ -28,18 +36,17 @@ const Player = () => {
 
   },[token,dispatch])
 
-  const playerState = async () => {
-    dispatch({"type":"GET_CURRENT_SOGN_REQUEST"})
-    const {data} = await axios.get("https://api.spotify.com/v1/me/player", {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }   
-    })
+  // const playerState = async () => {
+  //   dispatch({"type":"GET_CURRENT_SOGN_REQUEST"})
+  //   const {data} = await axios.get("https://api.spotify.com/v1/me/player", {
+  //       headers: {
+  //           Authorization: `Bearer ${token}`
+  //       }   
+  //   })
 
-    dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
-  }
+  //   dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
+  // }
 
-  
 
   // console.log(song)
   return (

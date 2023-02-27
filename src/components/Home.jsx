@@ -7,7 +7,7 @@ import RightSide from './RightSide';
 import MiddleSide from './MiddleSide';
 import Player from './Player';
 
-const Home = () => {
+const Home = ({spotify}) => {
   const [token,setToken]=useState("");
   const [artists,setArtists]=useState([]);
 
@@ -26,7 +26,7 @@ const Home = () => {
         <Col md={6} sm={8}>
            <div>   
             <Header setArtists={setArtists}/>
-            <MiddleSide artists={artists}/>
+            <MiddleSide artists={artists} spotify={spotify}/>
             {/* <Player/> */}
            </div>
         </Col>

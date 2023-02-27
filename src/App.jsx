@@ -6,11 +6,18 @@ import Home from './components/Home'
 import React, { forwardRef, useRef, useLayoutEffect, useImperativeHandle } from 'react';
 import gsap from 'gsap';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
+import SpotifyWebApi from 'spotify-web-api-js';
 
 function App(props) {
   const [token,setToken]=useState("");
   useEffect(()=>{
     setToken(window.localStorage.getItem("token"));
+  },[])
+
+  let spotify=new SpotifyWebApi();
+  useEffect(()=>{ 
+      spotify.setAccessToken(window.localStorage.getItem("token"));   
+  
   },[])
 
   const Circle = forwardRef((props, ref) => {
@@ -60,7 +67,7 @@ function App(props) {
          <Login/>
        ):(
         <>
-         <Home/>
+         <Home spotify={spotify}/>
         </>
       )} 
     </div>
