@@ -162,6 +162,10 @@
   align-items: center;
   justify-content: space-between;  
 }
+.recent_container{
+  max-height: 43vh;
+  overflow-y: hidden;
+}
 .recent_container_item{
   display: flex;
   justify-content: space-between;

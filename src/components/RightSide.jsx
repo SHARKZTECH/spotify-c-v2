@@ -28,6 +28,7 @@ const RightSide = () => {
           <p>See All</p>
           </div>
 
+        <div className='recent_container'>
           {Array.from({ length: 6 }).map((_, idx) => (
           <div className='recent_container_item'>
             <div>
@@ -36,8 +37,11 @@ const RightSide = () => {
              12min ago
           </div>
           ))}
+        </div>
 
           <div className='playing_song'>
+            {currentSong? (   
+              <>         
               <img src={currentSong?.item?.album.images[0].url} alt="song_image"/>
               <div>
                 <div>
@@ -46,6 +50,8 @@ const RightSide = () => {
                 </div>
              <AiFillHeart/>
               </div>
+              </>
+          ): "No Song Playing "}
           </div>
 
         </div>
