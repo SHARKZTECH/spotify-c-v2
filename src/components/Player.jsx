@@ -16,12 +16,14 @@ const Player = ({spotify}) => {
 
   useLayoutEffect(()=>{
     if(token != ""){
-      // playerState();           
+      // playerState();  
+      dispatch({"type":"GET_CURRENT_SONG_REQUEST"})         
       spotify.getMyCurrentPlayingTrack().then(data=>{
         // console.log(data)
         dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
 
       }).catch(error=>{
+        dispatch({"type":"GET_CURRENT_SONG_FAIL","payload":error.message})
         console.log(error)
       })
 
@@ -46,15 +48,44 @@ const Player = ({spotify}) => {
 
   //   dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
   // }
+  
+  const handlePausePlay=()=>{
+    if(currentSong?.is_playing){
+      spotify.pause();
+    }else{
+      spotify.play();
+    }
+  }
 
+  const skipNext=()=>{
+    spotify.skipToNext();
+    spotify.getMyCurrentPlayingTrack().then(data=>{
+      // console.log(data)
+      dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
 
-  // console.log(song)
+    }).catch(error=>{
+      dispatch({"type":"GET_CURRENT_SONG_FAIL","payload":error.message})
+      console.log(error)
+    })
+  }
+  const skipToPrevious=()=>{
+    spotify.skipToPrevious();
+    spotify.getMyCurrentPlayingTrack().then(data=>{
+      // console.log(data)
+      dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
+
+    }).catch(error=>{
+      dispatch({"type":"GET_CURRENT_SONG_FAIL","payload":error.message})
+      console.log(error)
+    })
+  }
+
   return (
     <div className='player_container'>
       {currentSong ?(
            <>
            <div>
-             <p>{currentSong?.item?.name}{"\t "}Artist:{currentSong?.item?.artists.map(artist=>artist.name)}</p>
+             <p>{currentSong?.item?.name}{"\t "}Artist:{currentSong?.item?.artists.map(artist=>artist.name).join(", ")}</p>
            </div>
            <IconContext.Provider value={{ className: 'react-icons' ,size : "25"}}>
            <div className='player_icons_container'>
@@ -65,9 +96,11 @@ const Player = ({spotify}) => {
      
               <div>
                <MdShuffle/>
-               <MdSkipPrevious/>
-               <MdPlayCircleFilled/>
-               <MdSkipNext/>   
+               <MdSkipPrevious onClick={skipToPrevious}/>
+               {currentSong?.is_playing ? 
+               (<MdPauseCircle onClick={handlePausePlay}/>): 
+               (<MdPlayCircleFilled onClick={handlePausePlay}/>)}
+               <MdSkipNext onClick={skipNext}/>   
                <MdRepeat/>       
               </div>
      

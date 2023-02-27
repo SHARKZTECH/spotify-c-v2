@@ -2,15 +2,22 @@ import React from 'react'
 import USER from "../assets/user.jpeg"
 import {AiFillHeart} from "react-icons/ai"
 import Song from './Song'
+import { useDispatch,useSelector } from 'react-redux'
 
 const RightSide = () => {
+  const dispatch=useDispatch();
+
+  const {user}=useSelector(state=>state.user);
+  const {currentSong}=useSelector(state=>state.currentSong)
+
+
   return (
     <div className='right_side_container'>
 
         <div className='user_profile_container'>
             <img className='user_profile_img' src={USER} alt='user-profile'/>
             <div>
-               <p>Sharkz Reigns</p>
+               <p>{user?.display_name}</p>
                <p>Primium Member</p>
             </div>
         </div>
@@ -31,11 +38,11 @@ const RightSide = () => {
           ))}
 
           <div className='playing_song'>
-              <img src={USER} alt="song_image"/>
+              <img src={currentSong?.item.album.images[0].url} alt="song_image"/>
               <div>
                 <div>
-                <p>Song Name</p>
-                <p style={{color:"gray"}}>Artist name</p>                  
+                <p>{currentSong?.item.name}</p>
+                <p style={{color:"gray"}}>{currentSong?.item?.artists.map(artist=>artist.name).join(", ")}</p>                  
                 </div>
              <AiFillHeart/>
               </div>

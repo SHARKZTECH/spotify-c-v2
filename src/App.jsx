@@ -7,9 +7,12 @@ import React, { forwardRef, useRef, useLayoutEffect, useImperativeHandle } from 
 import gsap from 'gsap';
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 import SpotifyWebApi from 'spotify-web-api-js';
+import { useDispatch } from 'react-redux';
 
 function App(props) {
   const [token,setToken]=useState("");
+  const dispatch=useDispatch();
+
   useEffect(()=>{
     setToken(window.localStorage.getItem("token"));
   },[])
@@ -17,6 +20,13 @@ function App(props) {
   let spotify=new SpotifyWebApi();
   useEffect(()=>{ 
       spotify.setAccessToken(window.localStorage.getItem("token"));   
+
+      spotify.getMe().then(data=>{
+          dispatch({"type":"GET_USER_SUCCESS","payload":data})
+          // console.log(data)
+      }).catch(error=>{
+        console.log(error)
+      })
   
   },[])
 
