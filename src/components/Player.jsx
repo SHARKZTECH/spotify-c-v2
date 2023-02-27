@@ -4,6 +4,8 @@ import {CgPlayList} from "react-icons/cg"
 import { IconContext } from 'react-icons'
 import axios from 'axios'
 import { useDispatch,useSelector } from 'react-redux'
+import { ProgressBar } from 'react-bootstrap'
+import { formatTime } from './formartedTime'
 
 const Player = ({spotify}) => {
   const [token,setToken]=useState("");
@@ -29,14 +31,19 @@ const Player = ({spotify}) => {
 
     }
 
-    // const intervalId = setInterval(() => {
-    //   if(token != ""){
-    //     playerState();
-    //   }  
-    // }, 2000);
-    // return () => clearInterval(intervalId);
+    const intervalId = setInterval(() => {
+      spotify.getMyCurrentPlayingTrack().then(data=>{
+        // console.log(data)
+        dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
 
-  },[token,dispatch])
+      }).catch(error=>{
+        dispatch({"type":"GET_CURRENT_SONG_FAIL","payload":error.message})
+        console.log(error)
+      }) 
+    }, 1000);
+    return () => clearInterval(intervalId);
+
+  },[token,dispatch,spotify])
 
   // const playerState = async () => {
   //   dispatch({"type":"GET_CURRENT_SOGN_REQUEST"})
@@ -59,6 +66,7 @@ const Player = ({spotify}) => {
 
   const skipNext=()=>{
     spotify.skipToNext();
+
     spotify.getMyCurrentPlayingTrack().then(data=>{
       // console.log(data)
       dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
@@ -70,6 +78,7 @@ const Player = ({spotify}) => {
   }
   const skipToPrevious=()=>{
     spotify.skipToPrevious();
+
     spotify.getMyCurrentPlayingTrack().then(data=>{
       // console.log(data)
       dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
@@ -110,7 +119,16 @@ const Player = ({spotify}) => {
              </div>
            </div>
            </IconContext.Provider>
+           <div className='progress_bar_container'>
+               <p>{formatTime(currentSong?.progress_ms)}</p>
+              <ProgressBar className='progress_bar' 
+              now={currentSong?.progress_ms}
+               max={currentSong?.item.duration_ms}
+               animated/>
+               <p>{formatTime(currentSong?.item.duration_ms)}</p>
+           </div>
            </>
+           
       ):(
         <p>No song currently playing...</p>
       )}

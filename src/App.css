@@ -236,7 +236,6 @@
     background-color:#0c4643ec;
   }
 }
-
 .player_icons_container{
   display: flex;
   align-items: center;
@@ -251,5 +250,13 @@
   cursor: pointer;
   filter: drop-shadow(0 0 10px  white);
 }
-
+.progress_bar_container{
+    margin-top: .3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.progress_bar{
+  width: 90%;
+}
 
