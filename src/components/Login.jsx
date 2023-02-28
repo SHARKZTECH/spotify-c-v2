@@ -3,6 +3,10 @@ import { Button } from 'react-bootstrap'
 import ICON from "../assets/icon1.png";
 
 const Login = () => {
+  // https://developer.spotify.com/documentation/web-playback-sdk/quick-start/#
+
+  // Replace with your app's client ID, redirect URI and desired scopes
+
   const CLIENT_ID = "0957e11683e846679d1076e5c4c95afe"
   // const REDIRECT_URI = "https://sharkztech.github.io/spotify-c-v2/"
   const REDIRECT_URI ="http://localhost:5173/"
@@ -32,8 +36,8 @@ const Login = () => {
 
     if(!token && hash){
       token=hash.substring(1).split("&").find(elem=>elem.startsWith("access_token")).split("=")[1];
-      window.location.hash=""
       window.localStorage.setItem("token",token);
+      window.location.hash=""
     }
 
     setToken(token);
@@ -49,7 +53,7 @@ const Login = () => {
         <div>
         
         <Button 
-        onClick={()=>window.open(url)}
+        onClick={()=>window.open(url,"_self")}
         variant='success' className='px-3'>Login With Spotify</Button>       
         </div>
       </div>    

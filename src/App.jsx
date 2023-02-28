@@ -25,7 +25,11 @@ function App(props) {
           dispatch({"type":"GET_USER_SUCCESS","payload":data})
           // console.log(data)
       }).catch(error=>{
-        console.log(error)
+        // console.log(error)
+        if(error.status == 401){
+          window.localStorage.removeItem("token");
+          window.reload();
+        }
       })
 
   
