@@ -124,6 +124,10 @@
   font-weight: 600;
   filter: none;
 }
+.item.active{
+  font-weight: 600;
+  filter: none;
+}
 .my_playlists{
   padding-left: 3rem;
   color: #235821;

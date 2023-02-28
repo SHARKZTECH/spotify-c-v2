@@ -52,7 +52,7 @@ const LeftSide = ({setPlaylistId}) => {
            <BsFillPersonCheckFill size={'25'}/>
             Favoriate Artist
           </div>
-          <div className='item'>
+          <div className='item active'>
            <TbPlaylist size={'25'}/>
             Playlist
           </div>  

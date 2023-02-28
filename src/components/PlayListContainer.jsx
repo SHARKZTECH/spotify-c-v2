@@ -35,7 +35,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
 
         <div style={{display:"flex",justifyContent:"space-between"}}>
         <h6>Popular</h6>
-        <p>See All</p>
+        <p style={{display:"none"}}>See All</p>
         </div>
 
         <Table striped hover>
