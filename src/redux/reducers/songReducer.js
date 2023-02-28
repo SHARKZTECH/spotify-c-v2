@@ -49,3 +49,16 @@ export const getPlayListsReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+
+export const getRecentPlayedReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_RECENT_REQUEST":
+            return {loading:true} 
+        case "GET_RECENT_SUCCESS":
+            return {loading:false,recent:payload,success:true}
+        case "GET_RECENT_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}

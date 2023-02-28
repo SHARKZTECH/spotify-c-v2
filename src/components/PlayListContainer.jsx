@@ -5,6 +5,7 @@ import IMG from "../assets/MPlayer.png"
 import { useDispatch,useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { formatTime } from './formartedTime';
+import { time_ago } from './timeago';
 
 const PlayListContainer = ({spotify,playlist_id}) => {
     const dispatch=useDispatch();
@@ -54,7 +55,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
             <td>
             <Song track={song.track}/>
             </td>
-            <td>{song.added_at}</td>
+            <td>{time_ago(Date.now()-(song.added_at.slice(11,-1).split(":").reduce((x,y)=>x*y)*1000))}</td>
             <td><AiFillHeart/>{formatTime(song.track.duration_ms)}</td>
         </tr>
         ))}             

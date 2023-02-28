@@ -30,7 +30,15 @@ function App(props) {
           window.localStorage.removeItem("token");
           window.reload();
         }
-      })
+      });
+
+      spotify.getMyRecentlyPlayedTracks().then(data=>{
+        dispatch({"type":"GET_RECENT_SUCCESS","payload":data})
+        // console.log(data)
+      }).catch(err=>{
+        dispatch({"type":"GET_RECENT_FAIL","payload":err})
+        // console.log(err)
+      });
 
   
   },[])

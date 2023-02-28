@@ -168,7 +168,10 @@
 }
 .recent_container{
   max-height: 43vh;
-  overflow-y: hidden;
+  overflow-y: scroll;
+}
+.recent_container::-webkit-scrollbar {
+  display: none;
 }
 .recent_container_item{
   display: flex;

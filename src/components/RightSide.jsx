@@ -2,13 +2,13 @@ import React from 'react'
 import USER from "../assets/user.jpeg"
 import {AiFillHeart} from "react-icons/ai"
 import Song from './Song'
-import { useDispatch,useSelector } from 'react-redux'
+import {useSelector } from 'react-redux'
+import { time_ago } from './timeago';
 
 const RightSide = () => {
-  const dispatch=useDispatch();
-
   const {user}=useSelector(state=>state.user);
-  const {currentSong}=useSelector(state=>state.currentSong)
+  const {currentSong}=useSelector(state=>state.currentSong);
+  const {recent}=useSelector(state=>state.recent);
 
 
   return (
@@ -25,16 +25,16 @@ const RightSide = () => {
         <div className='mt-2'>
           <div className='recent_container_header'>
           <h6>Recent played</h6>
-          <p>See All</p>
+          <p style={{display:"none"}}>See All</p>
           </div>
 
         <div className='recent_container'>
-          {Array.from({ length: 6 }).map((_, idx) => (
+          {recent?.items.map((item, idx) => (
           <div className='recent_container_item'>
             <div>
-             <Song/>
+             <Song track={item.track}/>
             </div>
-             12min ago
+            {time_ago(Date.now()-(item.played_at.slice(11,-1).split(/[:.]/).reduce((x,y)=>x*y)))}
           </div>
           ))}
         </div>
