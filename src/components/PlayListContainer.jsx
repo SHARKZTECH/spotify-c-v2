@@ -12,7 +12,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
     const {playlist}=useSelector(state=>state.playlist);
 
     useEffect(()=>{
-        spotify.getPlaylist('37i9dQZF1EpswxmXeGFls0').then(data=>{
+        spotify.getPlaylist(playlist_id).then(data=>{
             dispatch({"type":"GET_PLAYLIST_SUCCESS","payload":data})
            }).catch(error=>{
             console.log(error)
@@ -26,8 +26,8 @@ const PlayListContainer = ({spotify,playlist_id}) => {
             <Card.ImgOverlay>
                 <Card.Body>
                 <Card.Text>
-                    <p>{playlist?.name}</p>
-                    <h3>{playlist?.description}</h3>
+                    <h3>{playlist?.name}</h3>
+                    <p>{playlist?.description}</p>
                     <h5>{playlist?.owner.display_name}.{playlist?.tracks?.items.length} songs</h5>
                 </Card.Text>
                 </Card.Body>

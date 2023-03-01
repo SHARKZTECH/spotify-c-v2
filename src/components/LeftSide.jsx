@@ -16,6 +16,12 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
     setLikedSongs(true);
     setActive('liked')
   }
+  const handleWeeklyDiscover=()=>{
+    setLikedSongs(false);
+    setActive('weekly_discover');
+    setPlaylistId("37i9dQZEVXcLFgyIoBZXFl");
+  }
+  
   return (
     <div className='left_side_container'>
         <div className='logo_container'>
@@ -26,7 +32,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
            <AiFillHome size={'25'}/>
             Home
           </div>
-          <div className='item'>
+          <div className='item' style={{display:"none"}}>
            <MdExplore size={'25'}/>
             Trends
           </div>
@@ -37,7 +43,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
 
           <div className='item-title'>Discover</div>   
 
-                 <div className='item'>
+          <div className={active=='weekly_discover' ? 'item active' : 'item'} onClick={handleWeeklyDiscover}>
            <AiOutlineCalendar size={'25'}/>
             Discover Weekly
           </div>

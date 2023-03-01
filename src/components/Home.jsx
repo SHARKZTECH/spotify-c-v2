@@ -10,7 +10,7 @@ import Player from './Player';
 const Home = ({spotify}) => {
   const [token,setToken]=useState("");
   const [artists,setArtists]=useState([]);
-  const [playlist_id,setPlaylistId]=useState(null);
+  const [playlist_id,setPlaylistId]=useState("37i9dQZF1EpswxmXeGFls0");
   const [likedSongs,setLikedSongs]=useState(false);
 
 
