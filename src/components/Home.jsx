@@ -9,9 +9,9 @@ import Player from './Player';
 
 const Home = ({spotify}) => {
   const [token,setToken]=useState("");
-  const [artists,setArtists]=useState([]);
   const [playlist_id,setPlaylistId]=useState("37i9dQZF1EpswxmXeGFls0");
   const [likedSongs,setLikedSongs]=useState(false);
+  const [search,setSearch]=useState(false);
 
 
   useEffect(()=>{
@@ -22,14 +22,13 @@ const Home = ({spotify}) => {
     <div className='home_container'>
       <Row>
         <Col md={3} sm={4}>
-          <LeftSide setPlaylistId={setPlaylistId} setLikedSongs={setLikedSongs}/>
-          {/* {artists?.map(artist=>(<h1>{artist.name}</h1>))} */}
+          <LeftSide setPlaylistId={setPlaylistId} setLikedSongs={setLikedSongs} setSearch={setSearch}/>
         </Col>
 
         <Col md={6} sm={8}>
            <div>   
-            <Header setArtists={setArtists}/>
-            <MiddleSide artists={artists} spotify={spotify} playlist_id={playlist_id} likedSongs={likedSongs}/>
+            <Header  search={search}/>
+            <MiddleSide  spotify={spotify} playlist_id={playlist_id} likedSongs={likedSongs} search={search}/>
             {/* <Player/> */}
            </div>
         </Col>

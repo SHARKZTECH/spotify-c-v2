@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { getUserReducer,getCurrentSongReducer,getMyPlayListsReducer,getPlayListsReducer, getRecentPlayedReducer, getLikedReducer } from "./songReducer";
+import { getUserReducer,getCurrentSongReducer,getMyPlayListsReducer,getPlayListsReducer, getRecentPlayedReducer, getLikedReducer, getSearchReducer } from "./songReducer";
 
 const reducers=combineReducers({
     user:getUserReducer,
@@ -9,6 +9,7 @@ const reducers=combineReducers({
     playlist:getPlayListsReducer,
     recent:getRecentPlayedReducer,
     liked:getLikedReducer,
+    search:getSearchReducer,
 })
 
 export default reducers

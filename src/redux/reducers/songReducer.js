@@ -77,3 +77,16 @@ export const getLikedReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+
+export const getSearchReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_SEARCH_REQUEST":
+            return {loading:true} 
+        case "GET_SEARCH_SUCCESS":
+            return {loading:false,search:payload,success:true}
+        case "GET_SEARCH_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}

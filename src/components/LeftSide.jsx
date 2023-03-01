@@ -3,17 +3,22 @@ import LOGO from "../assets/icon1.png";
 import {AiFillHome,AiOutlineHeart,AiOutlineCalendar} from "react-icons/ai"
 import {BsMusicNoteBeamed,BsFillPersonCheckFill} from "react-icons/bs"
 import {TbPlaylist} from "react-icons/tb"
-import {MdOutlineLibraryMusic,MdExplore} from "react-icons/md"
+import {MdOutlineLibraryMusic,MdExplore,MdSearch} from "react-icons/md"
 import {BiDisc} from "react-icons/bi"
 import Myplaylist from './Myplaylist';
 import { useSelector, useDispatch } from 'react-redux';
 
-const LeftSide = ({setPlaylistId,setLikedSongs}) => {
+const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
   const dispatch=useDispatch();
   const [active,setActive]=useState('loves')
 
+  const handleSearch=()=>{
+    setSearch(true)
+    setActive('search')
+  }
   const handleLikedSongs=()=>{
     setLikedSongs(true);
+    setSearch(false)
     setActive('liked');
   }
   const handlePlayList=()=>{
@@ -22,6 +27,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
   const handleWeeklyDiscover=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
     setLikedSongs(false);
+    setSearch(false)
     setActive('weekly_discover');
     setPlaylistId("37i9dQZEVXcLFgyIoBZXFl");
   }
@@ -29,6 +35,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
   const handleLoves=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
     setLikedSongs(false);
+    setSearch(false)
     setActive("loves");
     setPlaylistId("37i9dQZF1EpswxmXeGFls0");
   }
@@ -36,6 +43,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
   const handleTop=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
     setLikedSongs(false);
+    setSearch(false)
     setActive("top");
     setPlaylistId("37i9dQZF1F0sijgNaJdgit");
   }
@@ -57,6 +65,10 @@ const LeftSide = ({setPlaylistId,setLikedSongs}) => {
           <div className='item'>
            <BsMusicNoteBeamed size={'25'}/>
             Library
+          </div>
+          <div className={active=='search' ? 'item active' : 'item'} onClick={handleSearch}>
+           <MdSearch size={'25'}/>
+            Search Track
           </div>
 
           <div className='item-title'>Discover</div>   

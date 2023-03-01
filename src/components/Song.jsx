@@ -6,7 +6,8 @@ const Song = ({track,spotify}) => {
 
   const handlePlay=(songUri)=>{
     spotify.play({
-      uris:[songUri]
+      uris:[songUri],
+      // context_uri:""
     }).then(()=>{
       console.log("playing succesful")
     }).catch(err=>{

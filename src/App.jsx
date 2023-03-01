@@ -51,8 +51,10 @@ function App(props) {
 
   },[])
 
+   //CIRCLE THAT MOVES WITH RESPECT TO CURSOR MOVEMENT
   const Circle = forwardRef((props, ref) => {
     const el = useRef();
+    
     useImperativeHandle(
       ref,
       () => {
@@ -65,22 +67,25 @@ function App(props) {
       },
       []
     );
+
     return (
     <div className='circle' ref={el}></div> 
     );
   });
-  const circleRef = useRef();
-  useLayoutEffect(() => {
-    // Add mousemove event listener
-    const handleMouseMove = (event) => {
-      circleRef.current.moveTo(event.clientX, event.clientY);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    // Remove event listener on cleanup
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+
+  // const circleRef = useRef();
+
+  // useLayoutEffect(() => {
+  //   // Add mousemove event listener
+  //   const handleMouseMove = (event) => {
+  //     circleRef.current.moveTo(event.clientX, event.clientY);
+  //   };
+  //   window.addEventListener('mousemove', handleMouseMove);
+  //   // Remove event listener on cleanup
+  //   return () => {
+  //     window.removeEventListener('mousemove', handleMouseMove);
+  //   };
+  // }, []);
 
 
       //  <div className='circle_container' ref={el}>

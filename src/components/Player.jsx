@@ -123,7 +123,7 @@ const Player = ({spotify}) => {
                <p>{formatTime(currentSong?.progress_ms)}</p>
               <ProgressBar className='progress_bar' 
               now={currentSong?.progress_ms}
-               max={currentSong?.item.duration_ms}
+               max={currentSong?.item?.duration_ms}
                animated/>
                <p>{formatTime(currentSong?.item.duration_ms)}</p>
            </div>
