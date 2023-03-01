@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LOGO from "../assets/icon1.png";
 import {AiFillHome,AiOutlineHeart,AiOutlineCalendar} from "react-icons/ai"
 import {BsMusicNoteBeamed,BsFillPersonCheckFill} from "react-icons/bs"
@@ -6,8 +6,16 @@ import {TbPlaylist} from "react-icons/tb"
 import {MdOutlineLibraryMusic,MdExplore} from "react-icons/md"
 import {BiDisc} from "react-icons/bi"
 import Myplaylist from './Myplaylist';
+import { useSelector, useDispatch } from 'react-redux';
 
-const LeftSide = ({setPlaylistId}) => {
+const LeftSide = ({setPlaylistId,setLikedSongs}) => {
+  const dispatch=useDispatch();
+  const [active,setActive]=useState('playlists')
+
+  const handleLikedSongs=()=>{
+    setLikedSongs(true);
+    setActive('liked')
+  }
   return (
     <div className='left_side_container'>
         <div className='logo_container'>
@@ -44,15 +52,15 @@ const LeftSide = ({setPlaylistId}) => {
 
         <div className='item-title'>Your Collection</div>   
 
-        <div className='item'>
-           <AiOutlineHeart size={'25'}/>
+        <div className={active=='liked' ? 'item active' : 'item'} onClick={handleLikedSongs}>
+           <AiOutlineHeart size={'25'} />
             Liked Songs
           </div>
           <div className='item'>
            <BsFillPersonCheckFill size={'25'}/>
             Favoriate Artist
           </div>
-          <div className='item active'>
+          <div className={active=='playlists' ? 'item active' : 'item'}>
            <TbPlaylist size={'25'}/>
             Playlist
           </div>  

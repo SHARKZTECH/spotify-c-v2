@@ -28,7 +28,7 @@ function App(props) {
         // console.log(error)
         if(error.status == 401){
           window.localStorage.removeItem("token");
-          window.reload();
+          // window.location.reload();
         }
       });
 
@@ -38,6 +38,14 @@ function App(props) {
       }).catch(err=>{
         dispatch({"type":"GET_RECENT_FAIL","payload":err})
         // console.log(err)
+      });
+
+      spotify.getMySavedTracks({"limit":50}).then(data=>{
+        dispatch({"type":"GET_LIKED_SUCCESS","payload":data})
+        // console.log(data)
+      }).catch(err=>{
+        dispatch({"type":"GET_LIKED_FAIL","payload":err})
+        console.log(err)
       });
 
   

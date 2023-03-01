@@ -62,3 +62,16 @@ export const getRecentPlayedReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+
+export const getLikedReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_LIKED_REQUEST":
+            return {loading:true} 
+        case "GET_LIKED_SUCCESS":
+            return {loading:false,liked:payload,success:true}
+        case "GET_LIKED_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}

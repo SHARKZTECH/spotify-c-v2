@@ -50,10 +50,10 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         </thead>
         <tbody>
         {playlist?.tracks?.items.map((song,idx) => (
-        <tr>
+        <tr key={idx}>
             <td>{idx}</td>
             <td>
-            <Song track={song.track}/>
+            <Song track={song.track} key={idx}/>
             </td>
             <td>{time_ago(Date.now()-(song.added_at.slice(11,-1).split(":").reduce((x,y)=>x*y)*1000))}</td>
             <td><AiFillHeart/>{formatTime(song.track.duration_ms)}</td>
