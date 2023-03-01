@@ -131,7 +131,7 @@
 .my_playlists{
   margin-left: 3rem;
   color: #235821;
-  height: 30%;
+  height: 28%;
   overflow-y: scroll;
   border-top:1px solid #235821;
 }
@@ -204,6 +204,7 @@
   height: 180px;
   width: 280px;
   border-radius: .3rem;
+  padding: .5rem;
 }
 .playing_song p{
   margin: 0px;

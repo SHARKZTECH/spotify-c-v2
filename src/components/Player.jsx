@@ -125,7 +125,7 @@ const Player = ({spotify}) => {
               now={currentSong?.progress_ms}
                max={currentSong?.item?.duration_ms}
                animated/>
-               <p>{formatTime(currentSong?.item.duration_ms)}</p>
+               <p>{formatTime(currentSong?.item?.duration_ms)}</p>
            </div>
            </>
            

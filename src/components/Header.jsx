@@ -31,7 +31,7 @@ const Header = ({search}) => {
   return (
     <div className={search ? 'header_container' : "none"}>
       <Form.Group>
-        <Form.Control type='text' placeholder='Search artist'
+        <Form.Control type='text' placeholder='Search tracks'
         onChange={(e)=>setSearchKey(e.target.value)}
         ></Form.Control>
       </Form.Group>
