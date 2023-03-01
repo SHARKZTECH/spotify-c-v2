@@ -9,16 +9,17 @@ import { time_ago } from './timeago';
 
 const PlayListContainer = ({spotify,playlist_id}) => {
     const dispatch=useDispatch();
-    const {playlist}=useSelector(state=>state.playlist);
+    const {loading,playlist}=useSelector(state=>state.playlist);
 
     useEffect(()=>{
+        dispatch({"type":"GET_PlAYLIST_REQUEST"})
         spotify.getPlaylist(playlist_id).then(data=>{
             dispatch({"type":"GET_PLAYLIST_SUCCESS","payload":data})
            }).catch(error=>{
             console.log(error)
            })
 
-    },[spotify])
+    },[spotify,playlist_id])
   return (
    <div className='playlist_container'>        
         <Card className='bg-dark text-white mt-2 mb-1 playlist_container_header'>
@@ -26,9 +27,13 @@ const PlayListContainer = ({spotify,playlist_id}) => {
             <Card.ImgOverlay>
                 <Card.Body>
                 <Card.Text>
-                    <h3>{playlist?.name}</h3>
-                    <p>{playlist?.description}</p>
-                    <h5>{playlist?.owner.display_name}.{playlist?.tracks?.items.length} songs</h5>
+                    {loading? "loading...":(
+                        <>
+                        <h3>{playlist?.name}</h3>
+                        <p style={{display:"none"}}>{playlist?.description}</p>
+                        <h5>{playlist?.owner.display_name}.{playlist?.tracks?.items.length} songs</h5>
+                        </>
+                    )}
                 </Card.Text>
                 </Card.Body>
             </Card.ImgOverlay>
@@ -49,16 +54,20 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         </tr>
         </thead>
         <tbody>
-        {playlist?.tracks?.items.map((song,idx) => (
-        <tr key={idx}>
-            <td>{idx}</td>
-            <td>
-            <Song track={song.track} key={idx}/>
-            </td>
-            <td>{time_ago(Date.now()-(song.added_at.slice(11,-1).split(":").reduce((x,y)=>x*y)*1000))}</td>
-            <td><AiFillHeart/>{formatTime(song.track.duration_ms)}</td>
-        </tr>
-        ))}             
+         {loading ? "loading...":(
+            <>
+            {playlist?.tracks?.items.map((song,idx) => (
+            <tr key={idx}>
+                <td>{idx}</td>
+                <td>
+                <Song track={song.track} key={idx}/>
+                </td>
+                <td>{time_ago(Date.now()-(song.added_at.slice(11,-1).split(":").reduce((x,y)=>x*y)*1000))}</td>
+                <td><AiFillHeart/>{formatTime(song.track.duration_ms)}</td>
+            </tr>
+            ))}             
+            </>
+         )}   
         </tbody>
         </Table>
 

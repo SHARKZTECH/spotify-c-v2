@@ -45,6 +45,8 @@ export const getPlayListsReducer=(state={},{type,payload})=>{
             return {loading:false,playlist:payload,success:true}
         case "GET_PLAYLIST_FAIL":
                 return {}
+        case "GET_PLAYLIST_RESET":
+            return {}        
         default:
             return state;
     }
