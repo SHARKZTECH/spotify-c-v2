@@ -188,6 +188,7 @@
 .song{
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
  .song p{
   margin: 0px;

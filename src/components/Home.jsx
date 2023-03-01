@@ -35,7 +35,7 @@ const Home = ({spotify}) => {
         </Col>
 
         <Col md={3} className="d-sm-none d-md-block">
-          <RightSide/>
+          <RightSide spotify={spotify}/>
         </Col>
       </Row>
     </div>

@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const LeftSide = ({setPlaylistId,setLikedSongs}) => {
   const dispatch=useDispatch();
-  const [active,setActive]=useState('playlists')
+  const [active,setActive]=useState('loves')
 
   const handleLikedSongs=()=>{
     setLikedSongs(true);

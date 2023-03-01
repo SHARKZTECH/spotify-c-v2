@@ -5,7 +5,7 @@ import Song from './Song'
 import {useSelector } from 'react-redux'
 import { time_ago } from './timeago';
 
-const RightSide = () => {
+const RightSide = ({spotify}) => {
   const {user}=useSelector(state=>state.user);
   const {currentSong}=useSelector(state=>state.currentSong);
   const {recent}=useSelector(state=>state.recent);
@@ -32,7 +32,7 @@ const RightSide = () => {
           {recent?.items.map((item, idx) => (
           <div className='recent_container_item'>
             <div>
-             <Song track={item.track} key={idx}/>
+             <Song track={item.track} key={idx} spotify={spotify}/>
             </div>
             {time_ago(Date.now()-(item.played_at.slice(11,-1).split(/[:.]/).reduce((x,y)=>x*y)))}
           </div>

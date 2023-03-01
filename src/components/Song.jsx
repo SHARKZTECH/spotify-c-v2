@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import USER from "../assets/user.jpeg"
 
 
-const Song = ({track}) => {
+const Song = ({track,spotify}) => {
+
+  const handlePlay=(songUri)=>{
+    spotify.play({
+      uris:[songUri]
+    }).then(()=>{
+      console.log("playing succesful")
+    }).catch(err=>{
+      console.log(err)
+    });
+  }
   return (
-    <div className='song'>
+    <div className='song' onClick={()=>handlePlay(track?.uri)}>
     <img src={track?.album.images[0].url || USER} alt="song_image"/>
     <div>
       <p>{track?.name || "Song name"} </p>
