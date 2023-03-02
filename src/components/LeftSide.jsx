@@ -29,7 +29,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
     setLikedSongs(false);
     setSearch(false)
     setActive('weekly_discover');
-    setPlaylistId("37i9dQZEVXcLFgyIoBZXFl");
+    setPlaylistId("37i9dQZEVXcJZyENOWUFo7"); //37i9dQZEVXcLFgyIoBZXFl
   }
 
   const handleLoves=()=>{

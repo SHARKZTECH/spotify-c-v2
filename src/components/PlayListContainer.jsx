@@ -1,4 +1,4 @@
-import { Card, Table } from 'react-bootstrap'
+import { Button, Card, Table } from 'react-bootstrap'
 import Song from './Song'
 import {AiFillHeart} from "react-icons/ai"
 import IMG from "../assets/MPlayer.png"
@@ -6,10 +6,13 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { formatTime } from './formartedTime';
 import { time_ago } from './timeago';
+import {MdOutlinePlayCircleFilled,MdPauseCircle} from "react-icons/md"
 
 const PlayListContainer = ({spotify,playlist_id}) => {
     const dispatch=useDispatch();
     const {loading,playlist}=useSelector(state=>state.playlist);
+    const {currentSong}=useSelector(state=>state.currentSong)
+
 
     useEffect(()=>{
         dispatch({"type":"GET_PlAYLIST_REQUEST"})
@@ -20,6 +23,21 @@ const PlayListContainer = ({spotify,playlist_id}) => {
            })
 
     },[spotify,playlist_id])
+
+    const playPlayList=(Uri)=>{
+        if(currentSong.is_playing){
+            spotify.pause();
+        }else{
+            spotify.play({
+                context_uri:Uri
+            }).then(()=>{
+                console.log("playing playlist success")
+            }).catch(err=>{
+                console.log(err);
+            })
+        }
+
+    }
   return (
    <div className='playlist_container'>        
         <Card className='bg-dark text-white mt-2 mb-1 playlist_container_header'>
@@ -39,8 +57,16 @@ const PlayListContainer = ({spotify,playlist_id}) => {
             </Card.ImgOverlay>
         </Card>
 
-        <div style={{display:"flex",justifyContent:"space-between"}}>
+        {/* <div style={{display:"flex",justifyContent:"space-between"}}> */}
+        <div>
         <h6>Popular</h6>
+        <div className='play_list_button'>
+            {currentSong?.is_playing ?(
+                 <MdPauseCircle size={40} onClick={()=>playPlayList(playlist.uri)}/> 
+            ):(
+                <MdOutlinePlayCircleFilled size={40} onClick={()=>playPlayList(playlist.uri)}/>
+            )}
+        </div>
         <p style={{display:"none"}}>See All</p>
         </div>
 
