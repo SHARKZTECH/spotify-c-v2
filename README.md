@@ -44,9 +44,6 @@ npm run dev
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Acknowledgments
-
-- This project was inspired by Spotify-C by Maegan Wilson.
 
 Demo: https://sharkztech.github.io/spotify-c-v2/
 
