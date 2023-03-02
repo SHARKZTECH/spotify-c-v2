@@ -26,7 +26,12 @@ function App(props) {
           // console.log(data)
       }).catch(error=>{
         // console.log(error)
-    
+        if(error.status == 401){
+          window.localStorage.removeItem("token");
+          if(window.localStorage.getItem("token")==null){
+            window.location.reload();
+          }
+        }   
       });
 
       spotify.getMyRecentlyPlayedTracks().then(data=>{
@@ -44,6 +49,7 @@ function App(props) {
         dispatch({"type":"GET_LIKED_FAIL","payload":err})
         // console.log(err)
       });
+
   },[])
 
    //CIRCLE THAT MOVES WITH RESPECT TO CURSOR MOVEMENT

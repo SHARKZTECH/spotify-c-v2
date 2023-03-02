@@ -14,8 +14,8 @@ const RightSide = ({spotify}) => {
   //ANIMATION
   const [shadowSize, setShadowSize] = useState(0);
   useEffect(() => {
-    const danceability = audio_features.danceability; // Get danceability value from song object
-    const energy = audio_features.energy; // Get energy value from song object
+    const danceability = audio_features?.danceability; // Get danceability value from song object
+    const energy = audio_features?.energy; // Get energy value from song object
 
     // Calculate shadow size based on danceability and energy values
     const minShadowSize = 0;
