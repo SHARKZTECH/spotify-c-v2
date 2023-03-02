@@ -95,7 +95,22 @@ const Player = ({spotify}) => {
       console.log(error)
     })
   }
-
+ const toggleShuffle=()=>{
+    if(currentSong?.shuffle_state){
+      spotify.setShuffle(false);
+    }else{
+      spotify.setShuffle(true);
+    }
+ }
+const setRepeateState=()=>{
+  if(currentSong?.repeat_state=="off"){
+    spotify.setRepeat("context");
+  }else if(currentSong?.repeat_state=="context"){
+    spotify.setRepeat("track");
+  }else{
+    spotify.setRepeat("off");
+  }
+}
   return (
     <div className='player_container'>
       {currentSong ?(
@@ -111,13 +126,23 @@ const Player = ({spotify}) => {
               </div>   
      
               <div>
-               <MdShuffle/>
+                {currentSong?.shuffle_state ? (
+                  <MdShuffleOn onClick={toggleShuffle}/>  
+                ):(
+                  <MdShuffle onClick={toggleShuffle}/>
+                )}
                <MdSkipPrevious onClick={skipToPrevious}/>
                {currentSong?.is_playing ? 
                (<MdPauseCircle onClick={handlePausePlay}/>): 
                (<MdPlayCircleFilled onClick={handlePausePlay}/>)}
-               <MdSkipNext onClick={skipNext}/>   
-               <MdRepeat/>       
+               <MdSkipNext onClick={skipNext}/>  
+               {currentSong?.repeat_state=="context" ? (
+                  <MdRepeatOn onClick={setRepeateState}/>
+               ) : currentSong?.repeat_state=="track" ? (
+                  <MdRepeatOneOn onClick={setRepeateState}/>
+               ) :(
+                 <MdRepeat onClick={setRepeateState}/>    
+               )} 
               </div>
      
              <div>
