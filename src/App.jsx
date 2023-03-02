@@ -27,10 +27,7 @@ function App(props) {
       }).catch(error=>{
         // console.log(error)
         if(error.status == 401){
-          window.localStorage.removeItem("token");
-          if(window.localStorage.getItem("token")==null){
-            window.location.reload();
-          }
+          window.localStorage.removeItem("token");       
         }   
       });
 

@@ -48,6 +48,9 @@ const RightSide = ({spotify}) => {
       }, animationDuration / animationSteps);
     }
 
+    if(!currentSong?.is_playing){
+      setShadowSize(0)
+    }
     // Clean up animation interval when component unmounts or when song changes
     return () => {
       clearInterval(animationIntervalId);
@@ -87,15 +90,20 @@ const RightSide = ({spotify}) => {
           <div className='playing_song'>
             {currentSong? (   
               <>  
-              <div
-                   style={{
+              {currentSong?.is_playing ? (
+                <div 
+                  style={{
                     boxShadow: `${shadowSize*.6}px ${shadowSize*.8}px ${shadowSize*.5}px ${shadowSize*.9}px rgba(200,0,200, 0.5)`,
                     transition: 'box-shadow 0.5s ease-out',
                     width: '100%',
                     height: '100%',
                   }}>
-              <img src={currentSong?.item?.album.images[0].url} alt="song_image"/>
-             </div>  
+                 <img src={currentSong?.item?.album.images[0].url} alt="song_image"/>
+                </div>  
+              ):(
+                <img src={currentSong?.item?.album.images[0].url} alt="song_image"/>
+              )}
+        
               <div>
                 <div>
                 <p>{currentSong?.item?.name}</p>
