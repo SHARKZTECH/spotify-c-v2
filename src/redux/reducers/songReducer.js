@@ -90,3 +90,15 @@ export const getSearchReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+export const getAudioFeaturesReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_AUDIO_FEATURES_REQUEST":
+            return {loading:true} 
+        case "GET_AUDIO_FEATURES_SUCCESS":
+            return {loading:false,audio_features:payload,success:true}
+        case "GET_AUDIO_FEATURES_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}

@@ -10,7 +10,7 @@ import { formatTime } from './formartedTime'
 const Player = ({spotify}) => {
   const [token,setToken]=useState("");
   const dispatch=useDispatch();
-  const {currentSong}=useSelector(state=>state.currentSong)
+  const {success,currentSong}=useSelector(state=>state.currentSong)
 
   useEffect(()=>{
     setToken(window.localStorage.getItem("token"));    
@@ -51,6 +51,18 @@ const Player = ({spotify}) => {
     return () => clearInterval(intervalId);
 
   },[token,dispatch,spotify])
+
+  useEffect(()=>{    
+    if(success){
+      spotify.getAudioFeaturesForTrack(currentSong?.item?.id).then(data=>{
+        dispatch({"type":"GET_AUDIO_FEATURES_SUCCESS","payload":data})
+          // console.log(data)
+      }).catch(err=>{
+        console.log(err)
+      })
+    }
+  },[currentSong])
+
 
   // const playerState = async () => {
   //   dispatch({"type":"GET_CURRENT_SOGN_REQUEST"})

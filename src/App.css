@@ -199,10 +199,12 @@
 }
 
 
-
+.playing_song{
+  width: 100%;
+}
 .playing_song img{
   height: 180px;
-  width: 280px;
+  width: 290px;
   border-radius: .3rem;
   padding: .5rem;
 }
@@ -213,6 +215,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: .5rem;
 }
 
 
