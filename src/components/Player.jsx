@@ -32,13 +32,20 @@ const Player = ({spotify}) => {
     }
 
     const intervalId = setInterval(() => {
-      spotify.getMyCurrentPlayingTrack().then(data=>{
+      spotify.getMyCurrentPlaybackState().then(data=>{
         // console.log(data)
         dispatch({"type":"GET_CURRENT_SONG_SUCCESS","payload":data});
 
       }).catch(error=>{
         dispatch({"type":"GET_CURRENT_SONG_FAIL","payload":error.message})
         console.log(error)
+
+        if(error.status == 401){
+          window.localStorage.removeItem("token");
+          if(window.localStorage.getItem("token")==null){
+            window.location.reload();
+          }
+        }
       }) 
     }, 1000);
     return () => clearInterval(intervalId);

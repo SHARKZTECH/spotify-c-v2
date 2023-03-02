@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import USER from "../assets/user.jpeg"
 
 
-const Song = ({track,spotify}) => {
+const Song = ({song,spotify}) => {
 
   const handlePlay=(songUri)=>{
     spotify.play({
@@ -14,12 +14,13 @@ const Song = ({track,spotify}) => {
       console.log(err)
     });
   }
+
   return (
-    <div className='song' onClick={()=>handlePlay(track?.uri)}>
-    <img src={track?.album.images[0].url || USER} alt="song_image"/>
+    <div className='song' onClick={()=>handlePlay(song?.track?.uri)}>
+    <img src={song?.track?.album.images[0].url || USER} alt="song_image"/>
     <div>
-      <p>{track?.name || "Song name"} </p>
-      <p style={{color:"#acacac"}}>{track?.artists.map((artist=>artist.name)).join(", ") || "Artists"} </p>
+      <p>{song?.track?.name || "Song name"} </p>
+      <p style={{color:"#acacac"}}>{song?.track?.artists.map((artist=>artist.name)).join(", ") || "Artists"} </p>
     </div>
     </div>
   )

@@ -30,9 +30,9 @@ const RightSide = ({spotify}) => {
 
         <div className='recent_container'>
           {recent?.items.map((item, idx) => (
-          <div className='recent_container_item'>
+          <div className='recent_container_item' key={idx}>
             <div>
-             <Song track={item.track} key={idx} spotify={spotify}/>
+             <Song song={item} key={idx} spotify={spotify}/>
             </div>
             {time_ago(Date.now()-(item.played_at.slice(11,-1).split(/[:.]/).reduce((x,y)=>x*y)))}
           </div>
