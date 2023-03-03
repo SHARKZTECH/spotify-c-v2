@@ -38,6 +38,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         }
 
     }
+    
   return (
    <div className='playlist_container'>        
         <Card className='bg-dark text-white mt-2 mb-1 playlist_container_header'>
