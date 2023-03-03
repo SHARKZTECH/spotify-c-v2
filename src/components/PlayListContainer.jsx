@@ -25,7 +25,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
     },[spotify,playlist_id])
 
     const playPlayList=(Uri)=>{
-        if(currentSong.is_playing){
+        if(currentSong.is_playing  && currentSong?.context?.uri.split(":")[2]==playlist_id){
             spotify.pause();
         }else{
             spotify.play({
@@ -38,6 +38,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         }
 
     }
+    
   return (
    <div className='playlist_container'>        
         <Card className='bg-dark text-white mt-2 mb-1 playlist_container_header'>
@@ -61,7 +62,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         <div>
         <h6>Popular</h6>
         <div className='play_list_button'>
-            {currentSong?.is_playing ?(
+            {currentSong?.is_playing && currentSong?.context?.uri.split(":")[2]==playlist_id ?(
                  <MdPauseCircle size={40} onClick={()=>playPlayList(playlist.uri)}/> 
             ):(
                 <MdOutlinePlayCircleFilled size={40} onClick={()=>playPlayList(playlist.uri)}/>

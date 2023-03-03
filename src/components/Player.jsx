@@ -54,7 +54,7 @@ const Player = ({spotify}) => {
 
   useEffect(()=>{    
 
-    if(success && currentSong != {}){
+    if(success && currentSong != {} && currentSong?.item?.id != undefined){
       spotify.getAudioFeaturesForTrack(currentSong?.item?.id).then(data=>{
         dispatch({"type":"GET_AUDIO_FEATURES_SUCCESS","payload":data})
           // console.log(data)

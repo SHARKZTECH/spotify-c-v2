@@ -13,7 +13,8 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
   const [active,setActive]=useState('loves')
 
   const handleSearch=()=>{
-    setSearch(true)
+    setLikedSongs(false);
+    setSearch(true);
     setActive('search')
   }
   const handleLikedSongs=()=>{
