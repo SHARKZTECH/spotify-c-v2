@@ -61,7 +61,7 @@ const PlayListContainer = ({spotify,playlist_id}) => {
         <div>
         <h6>Popular</h6>
         <div className='play_list_button'>
-            {currentSong?.is_playing ?(
+            {currentSong?.is_playing && currentSong?.context.uri.split(":")[2]==playlist_id ?(
                  <MdPauseCircle size={40} onClick={()=>playPlayList(playlist.uri)}/> 
             ):(
                 <MdOutlinePlayCircleFilled size={40} onClick={()=>playPlayList(playlist.uri)}/>
