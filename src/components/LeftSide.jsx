@@ -8,16 +8,18 @@ import {BiDisc} from "react-icons/bi"
 import Myplaylist from './Myplaylist';
 import { useSelector, useDispatch } from 'react-redux';
 
-const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
+const LeftSide = ({setPlaylistId,setLikedSongs,setSearch,setHome}) => {
   const dispatch=useDispatch();
   const [active,setActive]=useState('loves')
 
   const handleSearch=()=>{
+    setHome(false);
     setLikedSongs(false);
     setSearch(true);
     setActive('search')
   }
   const handleLikedSongs=()=>{
+    setHome(false);
     setLikedSongs(true);
     setSearch(false)
     setActive('liked');
@@ -27,6 +29,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
   }
   const handleWeeklyDiscover=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
+    setHome(false);
     setLikedSongs(false);
     setSearch(false)
     setActive('weekly_discover');
@@ -35,6 +38,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
 
   const handleLoves=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
+    setHome(false);
     setLikedSongs(false);
     setSearch(false)
     setActive("loves");
@@ -43,11 +47,26 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
 
   const handleTop=()=>{
     dispatch({"type":"GET_PLAYLIST_RESET"});
+    setHome(false);
     setLikedSongs(false);
     setSearch(false)
     setActive("top");
     setPlaylistId("37i9dQZF1F0sijgNaJdgit");
   }
+
+  const handleHome=()=>{
+    setHome(true);
+    setLikedSongs(false);
+    setSearch(false)
+    setActive("home");
+  }
+  const handleLib=()=>{
+    setHome(true);
+    setLikedSongs(false);
+    setSearch(false)
+    setActive("lib");
+  }
+  
   
   return (
     <div className='left_side_container'>
@@ -55,7 +74,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
             <img className='logo' src={LOGO} alt="logo"/>
             Musify
         </div>
-         <div className='item'>
+         <div className={active=='home' ? 'item active' : 'item'} onClick={handleHome}>
            <AiFillHome size={'25'}/>
             Home
           </div>
@@ -63,7 +82,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
            <MdExplore size={'25'}/>
             Trends
           </div>
-          <div className='item'>
+          <div className={active=='lib' ? 'item active' : 'item'} onClick={handleLib}>
            <BsMusicNoteBeamed size={'25'}/>
             Library
           </div>
@@ -101,7 +120,7 @@ const LeftSide = ({setPlaylistId,setLikedSongs,setSearch}) => {
            <TbPlaylist size={'25'}/>
             Playlist
           </div>  
-          <Myplaylist setPlaylistId={setPlaylistId} setLikedSongs={setLikedSongs} active={active}/>
+          <Myplaylist setPlaylistId={setPlaylistId} setLikedSongs={setLikedSongs} active={active} setSearch={setSearch} setHome={setHome}/>
     </div>
   )
 }

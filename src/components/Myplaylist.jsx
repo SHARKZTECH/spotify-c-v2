@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useDispatch,useSelector } from 'react-redux';
 import { getMyPlayLists } from '../redux/actions/SongAction';
 
-const Myplaylist = ({setPlaylistId,setLikedSongs,active}) => {
+const Myplaylist = ({setPlaylistId,setLikedSongs,active,setSearch,setHome}) => {
     const [token,setToken]=useState("");
     // const [playlists,setPlaylists]=useState([]);
 
@@ -24,6 +24,8 @@ const Myplaylist = ({setPlaylistId,setLikedSongs,active}) => {
     const handleClick=(id)=>{
       dispatch({"type":"GET_PLAYLIST_RESET"});
       setLikedSongs(false)
+      setSearch(false);
+      setHome(false)
       setPlaylistId(id)
     }
 
