@@ -12,7 +12,7 @@ const Home = ({spotify}) => {
   const [playlist_id,setPlaylistId]=useState("37i9dQZF1EpswxmXeGFls0");
   const [likedSongs,setLikedSongs]=useState(false);
   const [search,setSearch]=useState(false);
-  const [home,setHome]=useState(false);
+  const [home,setHome]=useState(true);
 
 
   useEffect(()=>{
