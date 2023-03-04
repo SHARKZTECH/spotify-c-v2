@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const LeftSide = ({setPlaylistId,setLikedSongs,setSearch,setHome}) => {
   const dispatch=useDispatch();
-  const [active,setActive]=useState('loves')
+  const [active,setActive]=useState('home')
 
   const handleSearch=()=>{
     setHome(false);
