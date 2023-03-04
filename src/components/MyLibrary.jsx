@@ -51,7 +51,7 @@ const MyLibrary = ({setPlaylistId,setLikedSongs,setSearch,setHome}) => {
         {playlists?.map((playlist, idx) => (
           <Col key={idx}>
             <Card style={{height:"300px"}} onClick={()=>handleClick(playlist?.id)}>
-              <Card.Img variant="top" src={playlist?.images[0].url} />
+              <Card.Img variant="top" src={playlist?.images[0].url} height={"220px"}/>
               <Card.Body>
                 <Card.Text style={{marginTop:"-20px"}}>{playlist?.name}</Card.Text>
                 <Card.Title style={{marginTop:"-10px"}}>{playlist?.owner.display_name}</Card.Title>                                 
@@ -75,7 +75,7 @@ const MyLibrary = ({setPlaylistId,setLikedSongs,setSearch,setHome}) => {
         <Row>
           <Col>
             <Card style={{height:"300px"}} onClick={handleLoves}>
-              <Card.Img variant="top" src={reapet?.images[0].url} />
+              <Card.Img variant="top" src={reapet?.images[0].url} height={"220px"} />
               <Card.Body>
                 <Card.Text style={{marginTop:"-20px"}}>{reapet?.name}</Card.Text>
                 <Card.Title style={{marginTop:"-10px"}}>{reapet?.owner.display_name}</Card.Title>                                 
@@ -84,22 +84,24 @@ const MyLibrary = ({setPlaylistId,setLikedSongs,setSearch,setHome}) => {
           </Col>
           <Col>
             <Card style={{height:"300px"}} onClick={handleWeeklyDiscover}>
-              <Card.Img variant="top" src={weekly?.images[0].url} />
+              <Card.Img variant="top" src={weekly?.images[0].url} height={"220px"}/>
               <Card.Body>
                 <Card.Text style={{marginTop:"-20px"}}>{weekly?.name}</Card.Text>
                 <Card.Title style={{marginTop:"-10px"}}>{weekly?.owner.display_name}</Card.Title>                                 
               </Card.Body>
             </Card>
           </Col>
+         {top == {} &&(
           <Col>
             <Card style={{height:"300px"}} onClick={handleTop}>
-              <Card.Img variant="top" src={top?.images[0].url} />
+              <Card.Img variant="top" src={top?.images[0].url} height={"220px"}/>
               <Card.Body>
                 <Card.Text style={{marginTop:"-20px"}}>{top?.name}</Card.Text>
                 <Card.Title style={{marginTop:"-10px"}}>{top?.owner.display_name}</Card.Title>                                 
               </Card.Body>
             </Card>
           </Col>
+         )}
         </Row>
       </div>
       <PlayList/>
