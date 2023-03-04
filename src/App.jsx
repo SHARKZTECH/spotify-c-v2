@@ -48,6 +48,24 @@ function App(props) {
       });
 
       
+      spotify.getPlaylist("37i9dQZF1F0sijgNaJdgit").then(data=>{
+        console.log(data)
+        dispatch({"type":"GET_TOP_SUCCESS","payload":data});
+      }).catch(err=>{
+        dispatch({"type":"GET_TOP_FAIL","payload":err});
+      });
+
+      spotify.getPlaylist("37i9dQZF1EpswxmXeGFls0").then(data=>{
+        dispatch({"type":"GET_REAPET_SUCCESS","payload":data});
+      }).catch(err=>{
+        dispatch({"type":"GET_REAPET_FAIL","payload":err});
+      });
+
+      spotify.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then(data=>{
+        dispatch({"type":"GET_WEEKLY_SUCCESS","payload":data});
+      }).catch(err=>{
+        dispatch({"type":"GET_WEEKLY_FAIL","payload":err});
+      });
   
    
   },[])

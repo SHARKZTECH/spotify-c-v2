@@ -102,3 +102,40 @@ export const getAudioFeaturesReducer=(state={},{type,payload})=>{
             return state;
     }
 }
+
+export const getTopReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_TOP_REQUEST":
+            return {loading:true} 
+        case "GET_TOP_SUCCESS":
+            return {loading:false,top:payload,success:true}
+        case "GET_TOP_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}
+export const getReapetReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_REAPET_REQUEST":
+            return {loading:true} 
+        case "GET_REAPET_SUCCESS":
+            return {loading:false,reapet:payload,success:true}
+        case "GET_REAPET_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}
+export const getWeekyReducer=(state={},{type,payload})=>{
+    switch(type){
+        case "GET_WEEKLY_REQUEST":
+            return {loading:true} 
+        case "GET_WEEKLY_SUCCESS":
+            return {loading:false,weekly:payload,success:true}
+        case "GET_WEEKLY_FAIL":
+                return {}
+        default:
+            return state;
+    }
+}
