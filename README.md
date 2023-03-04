@@ -37,6 +37,7 @@ npm run dev
 6. Open the application in your browser at http://localhost:5173.
 
 ## Screenshots
+![Screenshot from 2023-03-04 13-38-37](https://user-images.githubusercontent.com/87173929/222895412-512605ba-d735-4ad8-813c-d9143a825e25.png)
 
 ![Screenshot from 2023-03-02 08-17-43](https://user-images.githubusercontent.com/87173929/222338064-02d19cc7-cb88-41c5-8117-062bbab1b269.png)
 
